@@ -8,8 +8,9 @@ import com.android.tools.r8.{CompilationMode, D8Command, OutputMode}
 import scala.collection.JavaConverters._
 
 case class D8Options(outputPath: Path,
-                     release: Boolean = false,
+                     programFiles: Seq[Path],
                      libraryFiles: Seq[Path] = Seq.empty,
+                     release: Boolean = false,
                      minApiLevel: Int = AndroidApiLevel.getDefault.getLevel,
                      filePerClass: Boolean = false) {
   def d8Command: D8Command = {
@@ -23,7 +24,8 @@ case class D8Options(outputPath: Path,
       if (filePerClass) OutputMode.DexFilePerClassFile
       else OutputMode.DexIndexed
     )
-    builder.addLibraryFiles(libraryFiles.asJava)
+    builder.addProgramFiles(programFiles.asJavaCollection)
+    builder.addLibraryFiles(libraryFiles.asJavaCollection)
     builder.setMinApiLevel(minApiLevel)
 
     builder.build()
