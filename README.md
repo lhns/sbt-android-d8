@@ -1,0 +1,1 @@
+# scala-android-d8
