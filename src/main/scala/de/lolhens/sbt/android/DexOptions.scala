@@ -7,12 +7,12 @@ import com.android.tools.r8.{CompilationMode, D8Command, OutputMode}
 
 import scala.collection.JavaConverters._
 
-case class D8Options(outputPath: Path,
-                     programFiles: Seq[Path],
-                     libraryFiles: Seq[Path] = Seq.empty,
-                     release: Boolean = false,
-                     minApiLevel: Int = AndroidApiLevel.getDefault.getLevel,
-                     filePerClass: Boolean = false) {
+case class DexOptions(outputPath: Path,
+                      programFiles: Seq[Path],
+                      libraryFiles: Seq[Path] = Seq.empty,
+                      release: Boolean = false,
+                      minApiLevel: Int = AndroidApiLevel.getDefault.getLevel,
+                      filePerClass: Boolean = false) {
   def d8Command: D8Command = {
     val builder = D8Command.builder()
 

@@ -1,7 +1,9 @@
 package de.lolhens.sbt.android
 
-import sbt.taskKey
+import sbt._
 
 trait AndroidKeys {
-  lazy val packageAndroid = taskKey[Unit]("Package dex file")
+  lazy val packageDex = taskKey[Seq[File]]("Package dex file.")
+
+  lazy val dexOptions = taskKey[DexOptions]("Dexer options.")
 }
