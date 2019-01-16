@@ -12,4 +12,4 @@ lazy val root = (project in file("."))
   )
 
 //lazy val test = (project in file("test"))
-//  .enablePlugins(AndroidPlugin)
+//  .enablePlugins(R8Plugin)
